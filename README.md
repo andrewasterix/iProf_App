@@ -1,22 +1,22 @@
 # iProf_App
 
-## Applicazione Android
+### Caratteristiche
 
     - MinSdk: 28
     - Connesione a Firebase
 
-## Descrizione
+### Descrizione
     Applicazione Android per la gestione dei lezioni di ripetione per studenti.
 
-## Note
+### Note
     Applicazione a livello embrionale, allo solo scopo di migliorare le abilità nella creazione di un App Android "from Scratch".
     App Creata seguendo le lezione di Laboratorio Analisi Algoritmi - UNIGE - A.A. 2018/19
 
-## Building
+### Building
     - Clonare la Directory e importare in Android Studio.
     - Collegare a FireBase (Google tm) direttamente da Android Studio o creando un nuovo progetto e             seguendo le istruzioni.
 
-## Update
+### Update
     - 0.1
         - Creazione delle Activity di Login e SignUp
         - Creazione dei file XML delle Activity di Login e SignUp
