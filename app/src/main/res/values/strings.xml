@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">iProf</string>
+
+    <string name="hint_email">Insert Email</string>
+    <string name="hint_pwd">Insert Password</string>
+
+    <string name="signup_button">Sign up</string>
+    <string name="login_button">Login</string>
+
+    <string name="iproflogo">iProfLogo</string>
+
+    <string name="login2signup">Not registered? Sign Up</string>
+    <string name="signup2login">Already registered? Log In</string>
+
+    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
+    <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
+
+    <string name="logout_button">Logout</string>
+</resources>
