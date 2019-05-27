@@ -34,15 +34,14 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        // Crezione instanza di FireBase
+        // Creation FireBase Instace
         mAuth = FirebaseAuth.getInstance();
 
-        // Controllo se esiste ed è attiva una sessione di Firebase
+        // Checking FireBase Session
         if(mAuth.getCurrentUser() != null){
             startActivity(new Intent(SignUpActivity.this, MainActivity.class));
         }
 
-        // Link dei tag XML ad oggetti Java
         signUpButton = findViewById(R.id.sign_up_button);
         linkSignUp2Login = findViewById(R.id.link_signup2login);
 
@@ -51,7 +50,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressBar);
 
-        // Link dei listener di eventi ai bottoni
+        // Button Listerner (as LoginActivity)
         linkSignUp2Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +65,7 @@ public class SignUpActivity extends AppCompatActivity {
                 String emailString = email.getText().toString().trim();
                 final String passwordString = password.getText().toString().trim();
 
-                // Controllo se Email Pwd no vuota, se si fa apparire Toast con Help
+                // Help Toast if Email or Password are empty
                 if(TextUtils.isEmpty(emailString)){
                     Toast.makeText(getApplicationContext(), getString(R.string.hint_email), Toast.LENGTH_LONG).show();
                     return;
@@ -77,12 +76,13 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
 
+                // Help Toast if Password is shorter than 6 characters, else FireBase Error
                 if(passwordString.length() < 6){
                     Toast.makeText(getApplicationContext(), getString(R.string.minimum_password), Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                // Rende la ProgressBar Visibile
+                // ProgressBar Visibility
                 progressBar.setVisibility(View.VISIBLE);
 
                 mAuth.createUserWithEmailAndPassword(emailString, passwordString).addOnCompleteListener(
@@ -90,15 +90,16 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
+                        // ProgressBar Visibility
                         progressBar.setVisibility(View.GONE);
 
-                        // Controllo se la creazione dell'utente è andata a buon fine
+                        // Check if User Signup is OK
                         if(task.isSuccessful()){
-                            Toast.makeText(getApplicationContext(), "SignUp Ok", Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(), "SignUp Ok", Toast.LENGTH_LONG).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             startActivity(new Intent(SignUpActivity.this, MainActivity.class));
                         }else {
-                            // PWD da 6 ma errore in creazione dell'utente (Errore FireBase)
+                            // FireBase Error in account creating
                             Toast.makeText(getApplicationContext(), getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                         }
                     }

@@ -36,12 +36,12 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
-        // Creazione dell'istanza per connessione a FireBase
+        // Creation FireBase instance
         mAuth = FirebaseAuth.getInstance();
 
-        // Controllo della Sessione su FireBase
+        // FireBase Session User
         if (mAuth.getCurrentUser() != null){
-            // Se presente Sessione Avvio direttamente nuova activity
+            // Start new MainActivity
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
         }
 
@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressBar);
 
-        // Listener interno del Bottone di Login2SignUp
+        // Login2SignUp Button Listener
         linklogin2signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // Listener interno del Bottone di Login
+        // Login Button Listener
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                 final String passwordString = password.getText().toString().trim();
                 String emailString = email.getText().toString().trim();
 
-                // Controllo se Email Pwd no vuota, se si fa apparire Toast con Help
+                // Help Toast if User or Password are empty
                 if(TextUtils.isEmpty(emailString)){
                     Toast.makeText(getApplicationContext(), getString(R.string.hint_email), Toast.LENGTH_LONG).show();
                     return;
@@ -80,24 +80,26 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
+                // Toast Help if Password is shorter than 6 Character, if it's true we have a FireBase Error
                 if(passwordString.length() < 6){
                     Toast.makeText(getApplicationContext(), getString(R.string.minimum_password), Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                // Rende ProgressBar Visibile
+                // ProgressBar Visibility
                 progressBar.setVisibility(View.VISIBLE);
 
+                // SignIn with Email And Password, Firebase instruction
                 mAuth.signInWithEmailAndPassword(emailString, passwordString).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        // Rende ProgressBar non Visibile
+                        // ProgressBar Visibility
                         progressBar.setVisibility(View.GONE);
 
-                        // Controllo se Login andato a buon fine
+                        // Chec if Login Ok
                         if (task.isSuccessful()){
-                            Toast.makeText(getApplicationContext(), "Login OK", Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(), "Login OK", Toast.LENGTH_LONG).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             startActivity(new Intent(LoginActivity.this, MainActivity.class)); // Avvio nuova Activity
                         }else {

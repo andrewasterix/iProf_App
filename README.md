@@ -30,3 +30,9 @@
         - Aggiunta del bottone di Logout nell'activity Main che chiuda la sessione a FireBase
         - Creazione User e stampa della Mail
         - Modifiche minime a Script precenti
+    
+    - 0.4
+        - Creazione dei Fragmanet Class, Map, Profile
+        - Creazione dei un Tabbed Layout per la MainActivity tramite i Fragment precedenti
+        - Tolti i titoli dei Fragment e messe delle Icone al loro posto
+         
