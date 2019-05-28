@@ -34,7 +34,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        // Creation FireBase Instace
+        // Creation FireBase Instance
         mAuth = FirebaseAuth.getInstance();
 
         // Checking FireBase Session
@@ -50,7 +50,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressBar);
 
-        // Button Listerner (as LoginActivity)
+        // Button Listener (as LoginActivity)
         linkSignUp2Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -16,7 +16,7 @@
     - Clonare la Directory e importare in Android Studio.
     - Collegare a FireBase (Google tm) direttamente da Android Studio o creando un nuovo progetto e seguendo le istruzioni.
 
-### Update
+### Changelog
     - 0.1
         - Creazione delle Activity di Login e SignUp
         - Creazione dei file XML delle Activity di Login e SignUp
@@ -35,4 +35,10 @@
         - Creazione dei Fragmanet Class, Map, Profile
         - Creazione dei un Tabbed Layout per la MainActivity tramite i Fragment precedenti
         - Tolti i titoli dei Fragment e messe delle Icone al loro posto
-         
+
+    - 0.4.1
+        - Aggiunta menu con About e Logout
+        - Creazione Fragment e Activity di About
+    - 0.4.5
+        - Implementazione delle precedenti e collegamento al MainActivity
+        - Implementazione del Logout e ritorno al Login

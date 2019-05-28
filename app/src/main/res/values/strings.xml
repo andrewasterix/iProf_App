@@ -1,5 +1,8 @@
+
 <resources>
     <string name="app_name">iProf</string>
+
+    <string name="app_name_long">iProf App</string>
 
     <string name="hint_email">Insert Email</string>
     <string name="hint_pwd">Insert Password</string>
@@ -20,4 +23,9 @@
     <string name="tab_map">Map</string>
 
     <string name="logout_button">Logout</string>
+
+    <string name="menu_about">About</string>
+
+    <string name="about">v0.4.5</string>
+    <string name="copy">&#9400; Laboratorio PAA</string>
 </resources>

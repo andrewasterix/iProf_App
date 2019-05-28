@@ -6,11 +6,17 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.awas.iprof.activity.AboutActivity;
 import com.awas.iprof.activity.LoginActivity;
+import com.awas.iprof.fragment.FragmentAbout;
 import com.awas.iprof.fragment.FragmentClass;
 import com.awas.iprof.fragment.FragmentMap;
 import com.awas.iprof.fragment.FragmentProfile;
@@ -24,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
     // Tag LOG
     private String TAG = "MainActivity";
-
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
@@ -80,6 +85,40 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         */
+    }
+
+    // Update 0.4.1 - Add menu options
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_main, menu);
+        return true;
+    }
+
+    // Update 0.4.1 - Add menu options with AboutDialog and Logout
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.menu_about:
+                /* Deprecated version 0.4.1 - Alert Dialog for About
+                new AlertDialog.Builder(this).setTitle("iProf App").setMessage("Version: 0.4.1").setPositiveButton("Ok", null).show();
+                */
+
+                // Version 0.4.5 - About Activity and Fragment
+                startActivity(new Intent(MainActivity.this, AboutActivity.class));
+
+                // Toast.makeText(getApplicationContext(), "about", Toast.LENGTH_LONG).show();
+                return true;
+
+            case R.id.menu_logout:
+                // Toast.makeText(getApplicationContext(), "LogOut OK", Toast.LENGTH_LONG).show();
+                mAuth.signOut();
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     // Set up ViewPage with fragment Adapter
