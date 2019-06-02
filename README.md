@@ -42,3 +42,8 @@
     - 0.4.5
         - Implementazione delle precedenti e collegamento al MainActivity
         - Implementazione del Logout e ritorno al Login
+
+    - 0.5
+        - Aggiunta Mappa nel FragmentMap
+        - Implementazione della Mappa con i Google Play Services Gms
+        - Implementazione della localizzazione
